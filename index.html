@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>INDIGO</title>
+  <!-- jQuery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- Swiper js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+  <!-- CSS Reset -->
+  <link rel="stylesheet" href="css/reset.css">
+  <!-- User CSS -->
+  <link rel="stylesheet" href="css/default.css">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="favicon.png">
+  <!-- Favicon iOS -->
+  <link rel="apple-touch-icon-precomposed" href="favicon.png">
+  <!-- 내부스타일 -->
+  <style>
+    /* 320미만 */
+    .wrap{max-width:1920px;margin:0 auto;}
+    body::after{
+      content:'지원하지 않는 해상도 입니다.';
+      display:block;
+      position:fixed;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      font-size:30px;
+      color:red;
+      }
+    .wrap{display:none;}
+
+    /* 320이상 스타일 */
+    @media (min-width:320px){
+      /* 기본스타일/모바일 스타일 */
+      hr{background:#ccc;}
+      h1,h2,h3{color:#3f51b5;}
+      h2{font-size:42px;text-align:center;padding:60px 0 40px;}
+      h3{font-weight:bold;font-size:16px;text-align:center;}
+      .row{padding:0 23px;}
+      body::after{display:none;}
+      .wrap{display:block;}
+
+       /* header section */
+      .header{padding:22px 26px;}
+      .logo{float:left;}
+      .logo a{font-size:26px;color:#3f51b5;}
+      .nav{float:right;margin-top:7px;}
+      .ham_btn{cursor: pointer;}
+      .ham_btn li{width:25px;height:2px;margin-bottom:6px;background:#3f51b5;text-indent:-9999px}
+      .ham_btn li:last-child{margin-bottom:0;}
+      .main_nav{position:absolute;left:0;top:76px;z-index:99999;width:100%;background:#3f51b5}
+      .main_nav li{float:left;width:100%;border-bottom:1px solid rgba(255,255,255,0.6);padding:10px 20px;background:#3f51b5;}
+      .main_nav li:last-child{border-bottom:none;}
+      .main_nav li a{font-size:20px;background:#3f51b5;color:white;}
+      .main_nav{display:none;}
+
+      /* banner section */
+      .banner{margin-bottom:78px;}
+      .swiper-pagination{background:transparent;}
+
+      /* content section */
+      .content p{text-align:center;}
+      .we_are{margin-bottom:86px;}
+      .we_are h2{margin-bottom:44px;}
+      .we_are p{font-size:16px;line-height:30px;}
+      .svc_list div{text-align:center;margin-bottom:60px;}
+      .svc_list img{margin-bottom:30px;}
+      .svc_list h3{margin-bottom:26px;}
+      .svc_list p{line-height:24px;}
+
+      /* work section */
+      .work li{position:relative;float:left;width:100%;cursor: pointer;}
+      .work li::before{transition:0.3s;content:'';display:block;width:100%;height:100%;position:absolute;left:0;top:0;z-index:100;background:blue;opacity:0;}
+      .work li:hover::before{opacity:0.3;}
+      .work li .work_txt{transition:0.3s;opacity:0;position:absolute;left:10%;top:0%;z-index:101;background:transparent;}
+      .work li:hover .work_txt{opacity:1;top:10%;}
+      .work_txt h3,.work_txt p{color:white;text-align:left;background:transparent;}
+      .work_txt h3{font-size:22px;margin-bottom:10px;}
+      .work li img{width:100%;}
+
+      /* line02 */
+      .line02{width:20px;height:2px;margin:80px auto 0;background:#3f51b5;}
+
+      /* blog section */
+      .blog h2,.blog ul,.blog ul li{float:left;width:100%;}
+      .blog h3{font-weight:400;font-size:14px;text-align:left;color:#aaa;}
+      .blog p{font-size:18px;}
+      .blog img{width:100%;margin-bottom:10px;}
+      .blog ul li{margin-bottom:50px;}
+    }
+
+
+
+    /* 768이상 스타일 */
+    @media (min-width:768px){
+      .row{padding:0 50px;}
+      /* header section */
+      .header{padding:40px 7.083333333333333%;}
+      .nav{margin-top:-7px;}
+      .ham_btn{display:none;}
+      .main_nav{display:block;}
+      .main_nav{position:static;background:white;}
+      .main_nav li{width:auto;border-bottom:none;padding-right:24px;background:white;}
+      .main_nav li:last-child{padding-right:0;}
+      .main_nav li a{font-size:16px;background:white;color:#3f51b5;}
+      
+      /* content section */
+      .svc_list div{float:left;width:21.63173652694611%;margin-right:4.491017964071856%;}
+      .svc_list div:last-child{margin-right:0;}
+
+      /* work section */
+      .work li{width:50%;}
+
+      /* blog section */
+      .blog ul li{width:31.55864197530864%;margin-right:2.662037037037037%}
+      .blog ul li:last-child{margin-right:0;}
+    }
+
+
+
+
+
+    /* 1136이상 스타일 */
+    @media (min-width:1136px){
+      .row{padding:0 70px;}
+      h2{text-align:left;}
+      
+
+      /* content section */
+      .content p{text-align:left;}
+      .we_are h2{float:left;width:41.66666666666667%;}
+      .we_are p{position:relative;float:right;width:58.33333333333333%;}
+      .we_are p::before{position:absolute;left:-18px;top:10px;content:'';display:inline-block;width:2px;height:100px;background:#ccc;}
+
+      /* work section */
+      .work li{width:25%;}
+
+      /* line02 */
+      .line02{margin:80px auto;}
+
+      /* blog section */
+      .blog h2{width:23.64493322859387%;margin-right:1.80675569520817%;padding-top:0;}
+      .blog ul{width:74.54831107619796%;}
+      .blog ul li{width:31.71759747102213%;margin-right:2.423603793466807%;}
+
+      
+
+
+
+    }
+
+
+
+    /* 1287이상 스타일 */
+    @media (min-width:1287px){
+      .we_are p::before{height:72px;}
+    }
+
+  </style>
+  <!-- 내부스크립트 -->
+  <script>
+
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <!-- header section -->
+    <header class="header clearfix">
+      <h1 class="logo"><a href="index.html">INDIGO</a></h1>
+      <nav class="nav">
+        <ul class="tgl_btn ham_btn">
+          <li>첫째줄</li>
+          <li>둘째줄</li>
+          <li>셋째줄</li>
+        </ul>
+        <ul class="main_nav clearfix">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="we_are.html">WE ARE</a></li>
+          <li><a href="work.html">WORK</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+          <li><a href="contact_us.html">CONTACT US</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--banner section / Swiper -->
+    <section class="banner swiper-container">
+      <ul class="swiper-wrapper">
+        <li class="swiper-slide">
+          <a href="#">
+            <img src="images/banner01.jpg" alt="banner01">
+          </a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#">
+            <img src="images/banner02.jpg" alt="banner02">
+          </a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#">
+            <img src="images/banner03.jpg" alt="banner03">
+          </a>
+        </li>
+        <li class="swiper-slide">
+          <a href="#">
+            <img src="images/banner04.jpg" alt="banner04">
+          </a>
+        </li>
+      </ul>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </section>
+    
+    <!-- content section -->
+    <section class="section content">
+      <div class="row">
+        <article class="article we_are clearfix">
+          <h2>WE ARE</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit mollitia nostrum sequi reprehenderit amet distinctio iste eius totam, numquam at, repellendus, tempora dolor? Totam, similique sequi consequatur mollitia doloremque impedit?</p>
+        </article>
+        <article class="article svc_list clearfix">
+          <div>
+            <img src="images/weare01.png" alt="weare01">
+            <h3>HOME</h3>
+            <p>recusandae aliquam quisquam minima optio iure?</p>
+          </div>
+          <div>
+            <img src="images/weare02.png" alt="weare02">
+            <h3>WE ARE</h3>
+            <p>Lorem libero recusandae aliquam quisquam minima optio iure?</p>
+          </div>
+          <div>
+            <img src="images/weare03.png" alt="weare03">
+            <h3>WORK</h3>
+            <p>sit amet consectetur adipisicing </p>
+          </div>
+          <div>
+            <img src="images/weare04.png" alt="weare04">
+            <h3>BLOG</h3>
+            <p>adipisicing elit. At sapiente laboriosam alias</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- line -->
+    <div class="row"><hr></div>
+    
+    <!-- work section -->
+    <section class="section work">
+      <div class="row">
+        <h2>WORK</h2>
+      </div>
+      <ul class="clearfix">
+        <li>
+          <img src="images/work01.jpg" alt="work01">
+          <div class="work_txt">
+            <h3>Running</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+        <li>
+          <img src="images/work02.jpg" alt="work02">
+          <div class="work_txt">
+            <h3>Rugby</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+        <li>
+          <img src="images/work03.jpg" alt="work03">
+          <div class="work_txt">
+            <h3>Weight</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+        <li>
+          <img src="images/work04.jpg" alt="work04">
+          <div class="work_txt">
+            <h3>Marathon</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+        <li>
+          <img src="images/work05.jpg" alt="work05">
+          <div class="work_txt">
+            <h3>Boxing</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+        <li>
+          <img src="images/work06.jpg" alt="work06">
+          <div class="work_txt">
+            <h3>Ice Hockey</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+        <li>
+          <img src="images/work07.jpg" alt="work07">
+          <div class="work_txt">
+            <h3>Skate board</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+        <li>
+          <img src="images/work08.jpg" alt="work08">
+          <div class="work_txt">
+            <h3>Basketball</h3>
+            <p>WEB/PRINT</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- line2 -->
+    <div class="row"><hr class="line02"></div>
+
+    <!-- blog section -->
+    <section class="section blog">
+      <div class="row clearfix">
+        <h2>BLOG</h2>
+        <ul class="clearfix">
+          <li>
+            <img src="images/blog01.jpg" alt="blog01">
+            <h3>2019-01-01</h3>
+            <p>Lorem ipsum dolor sit</p>
+          </li>
+          <li>
+            <img src="images/blog02.jpg" alt="blog02">
+            <h3>2019-01-01</h3>
+            <p>Lorem ipsum dolor sit</p>
+          </li>
+          <li>
+            <img src="images/blog03.jpg" alt="blog03">
+            <h3>2019-01-01</h3>
+            <p>Lorem ipsum dolor sit</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+    jQuery(function($){
+      $(".ham_btn").click(function(){
+        $(".main_nav").slideToggle();
+      });
+    });
+  </script>
+
+</body>
+</html>
